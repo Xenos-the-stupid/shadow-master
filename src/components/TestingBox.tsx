@@ -5,21 +5,60 @@ import { useRef, useEffect } from "react";
 export default function TestingBox() {
   const [boxSettings, setBoxSettings] = useAtom(boxSettingsAtom);
   const boxRef = useRef<HTMLDivElement>(null);
-  const resizeObserver = new ResizeObserver((entries) => {
-    if (boxRef.current) {
-      setBoxSettings((prev) => ({
-        ...prev,
-        width: entries[0].contentRect.width,
-        height: entries[0].contentRect.height,
-      }));
-    }
-  });
+  const initialMouseX = useRef(0);
+  const isMouseDown = useRef(false);
 
   useEffect(() => {
+    const handleMouseDown = (e: MouseEvent) => {
+      isMouseDown.current = true;
+      initialMouseX.current = e.clientX;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isMouseDown.current && boxRef.current) {
+        setBoxSettings((prev) => {
+          const newBorderRadius =
+            prev.borderRadius - (e.clientX - initialMouseX.current) * 0.01;
+          return {
+            ...prev,
+            borderRadius: Math.max(0, newBorderRadius),
+          };
+        });
+      }
+    };
+
+    const handleMouseUp = () => {
+      isMouseDown.current = false;
+    };
+
+    const handleResize = (entries: ResizeObserverEntry[]) => {
+      if (boxRef.current) {
+        setBoxSettings((prev) => ({
+          ...prev,
+          width: entries[0].contentRect.width,
+          height: entries[0].contentRect.height,
+        }));
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(handleResize);
+
     if (boxRef.current) {
       resizeObserver.observe(boxRef.current);
+      boxRef.current.addEventListener("mousedown", handleMouseDown);
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
     }
-  }, []);
+
+    return () => {
+      if (boxRef.current) {
+        resizeObserver.unobserve(boxRef.current);
+        boxRef.current.removeEventListener("mousedown", handleMouseDown);
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("mouseup", handleMouseUp);
+      }
+    };
+  }, [setBoxSettings]);
 
   return (
     <div
@@ -32,7 +71,7 @@ export default function TestingBox() {
       }}
       className="group relative resize overflow-auto [&::-webkit-resizer]:hidden"
     >
-      <div className="absolute bottom-0 right-0 size-3 bg-slate-300 opacity-0 duration-300 group-hover:opacity-100"></div>
+      <div className="absolute bottom-0 right-0 size-3 bg-slate-300 opacity-0 duration-300 group-hover:opacity-100" />
     </div>
   );
 }
