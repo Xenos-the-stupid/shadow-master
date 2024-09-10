@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --text-color-light: hsl(0, 0, 0, .56);
+  --text-color-dark: hsl(0, 0, 0, .87);
+  --font-inter: "Inter", sans-serif;
+  --border-color: rgba(0, 0, 0, .35)
+}
+
+html {
+  font-family: var(--font-inter);
+}
