@@ -5,5 +5,5 @@ export const playgroundSettingsAtom = atom({
   height: 200,
   color: "#ffffff",
   borderRadius: 7,
-  backgroundColor: "#333",
+  backgroundColor: "#333333",
 });

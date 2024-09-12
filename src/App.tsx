@@ -7,12 +7,24 @@ import TestingBox from "./components/TestingBox";
 import { playgroundSettingsAtom } from "./store/box";
 import ColorInput from "./components/ColorInput";
 import { boxShadowAtom } from "./store/boxShadow";
-import { useState } from "react";
 
 export default function App() {
   const [boxSettings, setBoxSettings] = useAtom(playgroundSettingsAtom);
   const [boxShadow, setBoxShadow] = useAtom(boxShadowAtom);
-  const [numberOfShadow, setNumberOfShadow] = useState(1);
+
+  const onAddShadow = () => {
+    setBoxShadow((prev) => [
+      ...prev,
+      {
+        inset: false,
+        offsetX: 0,
+        offsetY: 0,
+        blur: 0,
+        spread: 0,
+        color: "#000000",
+      },
+    ]);
+  };
 
   return (
     <div>
@@ -20,38 +32,149 @@ export default function App() {
 
       <div className="flex h-[calc(100dvh-90px)]">
         <AsideWrapper className="dark:border-border-color-dark border-r border-border-color">
-          {new Array(numberOfShadow).fill(0).map((_, index) => (
-            <Accordion>
-              <Accordion.Title>Box Shadow 1</Accordion.Title>
-              <Accordion.Body>
+          {new Array(boxShadow.length).fill(null).map((_, index) => (
+            <Accordion key={index}>
+              <Accordion.Title>Box Shadow {index + 1}</Accordion.Title>
+              <Accordion.Body className="flex flex-col gap-5">
                 <Pxinput>
                   <Pxinput.Header>
                     <Pxinput.Label>OffSet X</Pxinput.Label>
                     <Pxinput.Size
-                      value={boxShadow[index].offsetX || 0}
+                      value={boxShadow[index].offsetX}
                       onChange={(e) =>
-                        setBoxShadow((prev) => ({
-                          ...prev,
-                          offsetX: +e.target.value,
-                        }))
+                        setBoxShadow((prev) => {
+                          const updatedShadow = [...prev];
+                          updatedShadow[index] = {
+                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            offsetX: +e.target.value,
+                          };
+                          return updatedShadow;
+                        })
                       }
                     />
                   </Pxinput.Header>
                   <Pxinput.Range
-                    value={boxShadow[index].offsetX || 0}
+                    value={boxShadow[index].offsetX}
                     onChange={(e) =>
-                      setBoxShadow((prev) => ({
-                        ...prev,
-                        offsetX: +e.target.value,
-                      }))
+                      setBoxShadow((prev) => {
+                        const updatedShadow = [...prev];
+                        updatedShadow[index] = {
+                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          offsetX: +e.target.value,
+                        };
+                        return updatedShadow;
+                      })
+                    }
+                  />
+                </Pxinput>
+                <Pxinput>
+                  <Pxinput.Header>
+                    <Pxinput.Label>OffSet Y</Pxinput.Label>
+                    <Pxinput.Size
+                      value={boxShadow[index].offsetY}
+                      onChange={(e) =>
+                        setBoxShadow((prev) => {
+                          const updatedShadow = [...prev];
+                          updatedShadow[index] = {
+                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            offsetY: +e.target.value,
+                          };
+                          return updatedShadow;
+                        })
+                      }
+                    />
+                  </Pxinput.Header>
+                  <Pxinput.Range
+                    value={boxShadow[index].offsetY}
+                    onChange={(e) =>
+                      setBoxShadow((prev) => {
+                        const updatedShadow = [...prev];
+                        updatedShadow[index] = {
+                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          offsetY: +e.target.value,
+                        };
+                        return updatedShadow;
+                      })
+                    }
+                  />
+                </Pxinput>
+                <Pxinput>
+                  <Pxinput.Header>
+                    <Pxinput.Label>Blur</Pxinput.Label>
+                    <Pxinput.Size
+                      value={boxShadow[index].blur}
+                      onChange={(e) =>
+                        setBoxShadow((prev) => {
+                          const updatedShadow = [...prev];
+                          updatedShadow[index] = {
+                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            blur: +e.target.value,
+                          };
+                          return updatedShadow;
+                        })
+                      }
+                    />
+                  </Pxinput.Header>
+                  <Pxinput.Range
+                    value={boxShadow[index].blur}
+                    onChange={(e) =>
+                      setBoxShadow((prev) => {
+                        const updatedShadow = [...prev];
+                        updatedShadow[index] = {
+                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          blur: +e.target.value,
+                        };
+                        return updatedShadow;
+                      })
+                    }
+                  />
+                </Pxinput>
+                <Pxinput>
+                  <Pxinput.Header>
+                    <Pxinput.Label>Spread</Pxinput.Label>
+                    <Pxinput.Size
+                      value={boxShadow[index].spread}
+                      onChange={(e) =>
+                        setBoxShadow((prev) => {
+                          const updatedShadow = [...prev];
+                          updatedShadow[index] = {
+                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            spread: +e.target.value,
+                          };
+                          return updatedShadow;
+                        })
+                      }
+                    />
+                  </Pxinput.Header>
+                  <Pxinput.Range
+                    value={boxShadow[index].spread}
+                    onChange={(e) =>
+                      setBoxShadow((prev) => {
+                        const updatedShadow = [...prev];
+                        updatedShadow[index] = {
+                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          spread: +e.target.value,
+                        };
+                        return updatedShadow;
+                      })
                     }
                   />
                 </Pxinput>
               </Accordion.Body>
             </Accordion>
           ))}
+          <button
+            className="dark:border-border-color-dark w-full border-y border-border-color py-4 text-center"
+            onClick={onAddShadow}
+            type="button"
+          >
+            Add Shadow
+          </button>
         </AsideWrapper>
-        <main className="grid flex-1 place-items-center" style={{backgroundColor: boxSettings.backgroundColor}}>
+        <main
+          className="grid flex-1 place-items-center"
+          style={{ backgroundColor: boxSettings.backgroundColor }}
+        >
           <TestingBox />
         </main>
         <AsideWrapper className="dark:border-border-color-dark border-l border-border-color">

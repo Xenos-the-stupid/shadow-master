@@ -1,12 +1,15 @@
 import { useAtom } from "jotai";
 import { playgroundSettingsAtom } from "../store/box";
 import { useRef, useEffect } from "react";
+import { addPixcels } from "../utils/add-pixcels";
+import { boxShadowAtom } from "../store/boxShadow";
 
 export default function TestingBox() {
   const [boxSettings, setBoxSettings] = useAtom(playgroundSettingsAtom);
   const boxRef = useRef<HTMLDivElement>(null);
   const initialMouseX = useRef(0);
   const isMouseDown = useRef(false);
+  const [boxShadow] = useAtom(boxShadowAtom);
 
   useEffect(() => {
     const handleMouseDown = (e: MouseEvent) => {
@@ -68,6 +71,7 @@ export default function TestingBox() {
         height: `${boxSettings.height}px`,
         backgroundColor: boxSettings.color,
         borderRadius: `${boxSettings.borderRadius}px`,
+        boxShadow: boxShadow.map((prop) => addPixcels(prop)).join(", "),
       }}
       className="group relative resize overflow-auto [&::-webkit-resizer]:hidden"
     >
