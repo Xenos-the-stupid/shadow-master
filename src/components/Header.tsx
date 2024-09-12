@@ -4,6 +4,7 @@ import useThemeMode from "../hooks/useThemeMode";
 import generateProperty from "../utils/generate-property";
 import { boxShadowAtom } from "../store/boxShadow";
 import { useAtom } from "jotai";
+import toast from "react-hot-toast";
 
 export default function Header() {
   const { themeMode, setThemeMode } = useThemeMode();
@@ -12,6 +13,9 @@ export default function Header() {
   const copyGeneratedCode = () => {
     const generatedCode = generateProperty(boxShadow);
     navigator.clipboard.writeText(generatedCode);
+    toast.success("Copied to clipboard!", {
+      className: "dark:bg-black dark:text-white shadow-md dark:shadow-white/30",
+    });
   };
 
   return (
