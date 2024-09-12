@@ -4,13 +4,13 @@ import AsideWrapper from "./components/AsideWrapper";
 import Header from "./components/Header";
 import Pxinput from "./components/PxInput";
 import TestingBox from "./components/TestingBox";
-import { boxSettingsAtom } from "./store/box";
+import { playgroundSettingsAtom } from "./store/box";
 import ColorInput from "./components/ColorInput";
 import { boxShadowAtom } from "./store/boxShadow";
 import { useState } from "react";
 
 export default function App() {
-  const [boxSettings, setBoxSettings] = useAtom(boxSettingsAtom);
+  const [boxSettings, setBoxSettings] = useAtom(playgroundSettingsAtom);
   const [boxShadow, setBoxShadow] = useAtom(boxShadowAtom);
   const [numberOfShadow, setNumberOfShadow] = useState(1);
 
@@ -51,7 +51,7 @@ export default function App() {
             </Accordion>
           ))}
         </AsideWrapper>
-        <main className="grid flex-1 place-items-center bg-[#999]">
+        <main className="grid flex-1 place-items-center" style={{backgroundColor: boxSettings.backgroundColor}}>
           <TestingBox />
         </main>
         <AsideWrapper className="dark:border-border-color-dark border-l border-border-color">
@@ -121,6 +121,27 @@ export default function App() {
                     setBoxSettings((prev) => ({
                       ...prev,
                       color: e.target.value,
+                    }))
+                  }
+                />
+              </ColorInput>
+              <ColorInput>
+                <ColorInput.Circle
+                  value={boxSettings.backgroundColor}
+                  onChange={(e) =>
+                    setBoxSettings((prev) => ({
+                      ...prev,
+                      backgroundColor: e.target.value,
+                    }))
+                  }
+                />
+                <ColorInput.Label>background Color</ColorInput.Label>
+                <ColorInput.Text
+                  value={boxSettings.backgroundColor}
+                  onChange={(e) =>
+                    setBoxSettings((prev) => ({
+                      ...prev,
+                      backgroundColor: e.target.value,
                     }))
                   }
                 />

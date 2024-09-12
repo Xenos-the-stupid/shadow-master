@@ -1,9 +1,9 @@
 import { useAtom } from "jotai";
-import { boxSettingsAtom } from "../store/box";
+import { playgroundSettingsAtom } from "../store/box";
 import { useRef, useEffect } from "react";
 
 export default function TestingBox() {
-  const [boxSettings, setBoxSettings] = useAtom(boxSettingsAtom);
+  const [boxSettings, setBoxSettings] = useAtom(playgroundSettingsAtom);
   const boxRef = useRef<HTMLDivElement>(null);
   const initialMouseX = useRef(0);
   const isMouseDown = useRef(false);
