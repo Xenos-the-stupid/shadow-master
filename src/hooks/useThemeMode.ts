@@ -2,13 +2,13 @@ import { useLayoutEffect, useState } from "react";
 
 export default function useThemeMode() {
   const [themeMode, setThemeMode] = useState<"light" | "dark">(() => {
-    if (
-      localStorage.getItem("themeMode") === "dark" ||
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      return "dark";
+    const savedTheme = localStorage.getItem("themeMode");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      return savedTheme;
     }
-    return "light";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   });
 
   useLayoutEffect(() => {
