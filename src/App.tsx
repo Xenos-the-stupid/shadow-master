@@ -147,6 +147,21 @@ export default function App() {
                     }
                   />
                 </Pxinput>
+                <ColorInput>
+                  <ColorInput.Circle
+                    value={boxShadow[index].color}
+                    onChange={(e) =>
+                      updateBoxShadow({ e, index, prop: "color" })
+                    }
+                  />
+                  <ColorInput.Label>background Color</ColorInput.Label>
+                  <ColorInput.Text
+                    value={boxShadow[index].color}
+                    onChange={(e) =>
+                      updateBoxShadow({ e, index, prop: "color" })
+                    }
+                  />
+                </ColorInput>
               </Accordion.Body>
             </Accordion>
           ))}
