@@ -12,10 +12,10 @@ export type BoxShadowAtom = {
 export const boxShadowAtom = atom<BoxShadowAtom[]>([
   {
     inset: false,
-    offsetX: 0,
-    offsetY: 0,
-    blur: 0,
+    offsetX: 15,
+    offsetY: 15,
+    blur: 40,
     spread: 0,
-    color: "#000000",
+    color: "rgba(0, 0, 0, 0.3)",
   },
 ]);
