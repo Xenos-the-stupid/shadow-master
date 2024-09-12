@@ -1,6 +1,16 @@
 import { atom } from "jotai";
 
-export const playgroundSettingsAtom = atom({
+export type PlaygroundSettings = {
+  width: number;
+  height: number;
+  color: string;
+  borderWidth: number;
+  borderRadius: number;
+  backgroundColor: string;
+  borderColor: string;
+};
+
+export const playgroundSettingsAtom = atom<PlaygroundSettings>({
   width: 200,
   height: 200,
   color: "#ffffff",

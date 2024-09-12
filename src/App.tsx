@@ -4,9 +4,20 @@ import AsideWrapper from "./components/AsideWrapper";
 import Header from "./components/Header";
 import Pxinput from "./components/PxInput";
 import TestingBox from "./components/TestingBox";
-import { playgroundSettingsAtom } from "./store/box";
+import { playgroundSettingsAtom, PlaygroundSettings } from "./store/box";
 import ColorInput from "./components/ColorInput";
-import { boxShadowAtom } from "./store/boxShadow";
+import { BoxShadowAtom, boxShadowAtom } from "./store/boxShadow";
+
+type UpdateBoxShadowProps = {
+  index: number;
+  e: React.ChangeEvent<HTMLInputElement>;
+  prop: keyof BoxShadowAtom;
+};
+
+type UpdatePlaygroundSettingsProps = {
+  e: React.ChangeEvent<HTMLInputElement>;
+  prop: keyof PlaygroundSettings;
+};
 
 export default function App() {
   const [boxSettings, setBoxSettings] = useAtom(playgroundSettingsAtom);
@@ -26,12 +37,37 @@ export default function App() {
     ]);
   };
 
+  const updateBoxShadow = ({ e, index, prop }: UpdateBoxShadowProps) => {
+    setBoxShadow((prev) => {
+      const updatedShadow = [...prev];
+      updatedShadow[index] = {
+        ...updatedShadow[index],
+        [prop]: ["inset", "offsetX", "offsetY", "blur", "spread"].includes(prop)
+          ? +e.target.value
+          : e.target.value,
+      };
+      return updatedShadow;
+    });
+  };
+
+  const updatePlaygroundSettings = ({
+    e,
+    prop,
+  }: UpdatePlaygroundSettingsProps) => {
+    setBoxSettings((prev) => ({
+      ...prev,
+      [prop]: ["width", "height"].includes(prop)
+        ? +e.target.value
+        : e.target.value,
+    }));
+  };
+
   return (
     <div>
       <Header />
 
       <div className="flex h-[calc(100dvh-90px)]">
-        <AsideWrapper className="dark:border-border-color-dark border-r border-border-color">
+        <AsideWrapper className="border-r border-border-color dark:border-border-color-dark">
           {new Array(boxShadow.length).fill(null).map((_, index) => (
             <Accordion key={index}>
               <Accordion.Title>Box Shadow {index + 1}</Accordion.Title>
@@ -42,28 +78,14 @@ export default function App() {
                     <Pxinput.Size
                       value={boxShadow[index].offsetX}
                       onChange={(e) =>
-                        setBoxShadow((prev) => {
-                          const updatedShadow = [...prev];
-                          updatedShadow[index] = {
-                            ...updatedShadow[index],
-                            offsetX: +e.target.value,
-                          };
-                          return updatedShadow;
-                        })
+                        updateBoxShadow({ e, index, prop: "offsetX" })
                       }
                     />
                   </Pxinput.Header>
                   <Pxinput.Range
                     value={boxShadow[index].offsetX}
                     onChange={(e) =>
-                      setBoxShadow((prev) => {
-                        const updatedShadow = [...prev];
-                        updatedShadow[index] = {
-                          ...updatedShadow[index],
-                          offsetX: +e.target.value,
-                        };
-                        return updatedShadow;
-                      })
+                      updateBoxShadow({ e, index, prop: "offsetX" })
                     }
                   />
                 </Pxinput>
@@ -87,14 +109,7 @@ export default function App() {
                   <Pxinput.Range
                     value={boxShadow[index].offsetY}
                     onChange={(e) =>
-                      setBoxShadow((prev) => {
-                        const updatedShadow = [...prev];
-                        updatedShadow[index] = {
-                          ...updatedShadow[index],
-                          offsetY: +e.target.value,
-                        };
-                        return updatedShadow;
-                      })
+                      updateBoxShadow({ e, index, prop: "offsetY" })
                     }
                   />
                 </Pxinput>
@@ -104,28 +119,14 @@ export default function App() {
                     <Pxinput.Size
                       value={boxShadow[index].blur}
                       onChange={(e) =>
-                        setBoxShadow((prev) => {
-                          const updatedShadow = [...prev];
-                          updatedShadow[index] = {
-                            ...updatedShadow[index],
-                            blur: +e.target.value,
-                          };
-                          return updatedShadow;
-                        })
+                        updateBoxShadow({ e, index, prop: "blur" })
                       }
                     />
                   </Pxinput.Header>
                   <Pxinput.Range
                     value={boxShadow[index].blur}
                     onChange={(e) =>
-                      setBoxShadow((prev) => {
-                        const updatedShadow = [...prev];
-                        updatedShadow[index] = {
-                          ...updatedShadow[index],
-                          blur: +e.target.value,
-                        };
-                        return updatedShadow;
-                      })
+                      updateBoxShadow({ e, index, prop: "blur" })
                     }
                   />
                 </Pxinput>
@@ -135,28 +136,14 @@ export default function App() {
                     <Pxinput.Size
                       value={boxShadow[index].spread}
                       onChange={(e) =>
-                        setBoxShadow((prev) => {
-                          const updatedShadow = [...prev];
-                          updatedShadow[index] = {
-                            ...updatedShadow[index],
-                            spread: +e.target.value,
-                          };
-                          return updatedShadow;
-                        })
+                        updateBoxShadow({ e, index, prop: "spread" })
                       }
                     />
                   </Pxinput.Header>
                   <Pxinput.Range
                     value={boxShadow[index].spread}
                     onChange={(e) =>
-                      setBoxShadow((prev) => {
-                        const updatedShadow = [...prev];
-                        updatedShadow[index] = {
-                          ...updatedShadow[index],
-                          spread: +e.target.value,
-                        };
-                        return updatedShadow;
-                      })
+                      updateBoxShadow({ e, index, prop: "spread" })
                     }
                   />
                 </Pxinput>
@@ -164,7 +151,7 @@ export default function App() {
             </Accordion>
           ))}
           <button
-            className="dark:border-border-color-dark w-full border-y border-border-color py-4 text-center"
+            className="w-full border-y border-border-color py-4 text-center dark:border-border-color-dark"
             onClick={onAddShadow}
             type="button"
           >
@@ -177,7 +164,7 @@ export default function App() {
         >
           <TestingBox />
         </main>
-        <AsideWrapper className="dark:border-border-color-dark border-l border-border-color">
+        <AsideWrapper className="border-l border-border-color dark:border-border-color-dark">
           <Accordion>
             <Accordion.Title>Box Settings</Accordion.Title>
             <Accordion.Body className="flex flex-col gap-5">
@@ -187,20 +174,14 @@ export default function App() {
                   <Pxinput.Size
                     value={boxSettings.width}
                     onChange={(e) =>
-                      setBoxSettings((prev) => ({
-                        ...prev,
-                        width: +e.target.value,
-                      }))
+                      updatePlaygroundSettings({ e, prop: "width" })
                     }
                   />
                 </Pxinput.Header>
                 <Pxinput.Range
                   value={boxSettings.width}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      width: +e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "width" })
                   }
                 />
               </Pxinput>
@@ -210,20 +191,14 @@ export default function App() {
                   <Pxinput.Size
                     value={boxSettings.height}
                     onChange={(e) =>
-                      setBoxSettings((prev) => ({
-                        ...prev,
-                        height: +e.target.value,
-                      }))
+                      updatePlaygroundSettings({ e, prop: "height" })
                     }
                   />
                 </Pxinput.Header>
                 <Pxinput.Range
                   value={boxSettings.height}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      height: +e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "height" })
                   }
                 />
               </Pxinput>
@@ -233,20 +208,14 @@ export default function App() {
                   <Pxinput.Size
                     value={boxSettings.borderWidth}
                     onChange={(e) =>
-                      setBoxSettings((prev) => ({
-                        ...prev,
-                        borderWidth: +e.target.value,
-                      }))
+                      updatePlaygroundSettings({ e, prop: "borderWidth" })
                     }
                   />
                 </Pxinput.Header>
                 <Pxinput.Range
                   value={boxSettings.borderWidth}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      borderWidth: +e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "borderWidth" })
                   }
                 />
               </Pxinput>
@@ -256,20 +225,14 @@ export default function App() {
                   <Pxinput.Size
                     value={boxSettings.borderRadius}
                     onChange={(e) =>
-                      setBoxSettings((prev) => ({
-                        ...prev,
-                        borderRadius: +e.target.value,
-                      }))
+                      updatePlaygroundSettings({ e, prop: "borderRadius" })
                     }
                   />
                 </Pxinput.Header>
                 <Pxinput.Range
                   value={boxSettings.borderRadius}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      borderRadius: +e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "borderRadius" })
                   }
                 />
               </Pxinput>
@@ -277,20 +240,14 @@ export default function App() {
                 <ColorInput.Circle
                   value={boxSettings.color}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      color: e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "color" })
                   }
                 />
                 <ColorInput.Label>Box Color</ColorInput.Label>
                 <ColorInput.Text
                   value={boxSettings.color}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      color: e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "color" })
                   }
                 />
               </ColorInput>
@@ -298,20 +255,14 @@ export default function App() {
                 <ColorInput.Circle
                   value={boxSettings.borderColor}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      borderColor: e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "borderColor" })
                   }
                 />
                 <ColorInput.Label>Box Color</ColorInput.Label>
                 <ColorInput.Text
                   value={boxSettings.borderColor}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      borderColor: e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "borderColor" })
                   }
                 />
               </ColorInput>
@@ -319,20 +270,14 @@ export default function App() {
                 <ColorInput.Circle
                   value={boxSettings.backgroundColor}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      backgroundColor: e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "backgroundColor" })
                   }
                 />
                 <ColorInput.Label>background Color</ColorInput.Label>
                 <ColorInput.Text
                   value={boxSettings.backgroundColor}
                   onChange={(e) =>
-                    setBoxSettings((prev) => ({
-                      ...prev,
-                      backgroundColor: e.target.value,
-                    }))
+                    updatePlaygroundSettings({ e, prop: "backgroundColor" })
                   }
                 />
               </ColorInput>
