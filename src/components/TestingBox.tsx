@@ -34,12 +34,14 @@ export default function TestingBox() {
       isMouseDown.current = false;
     };
 
-    const handleResize = (entries: ResizeObserverEntry[]) => {
+    const handleResize = () => {
       if (boxRef.current) {
+        const { width, height } = boxRef.current.getBoundingClientRect(); // Includes border, padding, etc.
+
         setBoxSettings((prev) => ({
           ...prev,
-          width: entries[0].contentRect.width,
-          height: entries[0].contentRect.height,
+          width: Math.round(width),
+          height: Math.round(height),
         }));
       }
     };
@@ -72,6 +74,7 @@ export default function TestingBox() {
         backgroundColor: boxSettings.color,
         borderRadius: `${boxSettings.borderRadius}px`,
         boxShadow: boxShadow.map((prop) => addPixcels(prop)).join(", "),
+        border: `${boxSettings.borderWidth}px solid ${boxSettings.borderColor}`,
       }}
       className="group relative resize overflow-auto [&::-webkit-resizer]:hidden"
     >
