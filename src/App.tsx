@@ -45,7 +45,7 @@ export default function App() {
                         setBoxShadow((prev) => {
                           const updatedShadow = [...prev];
                           updatedShadow[index] = {
-                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            ...updatedShadow[index],
                             offsetX: +e.target.value,
                           };
                           return updatedShadow;
@@ -59,7 +59,7 @@ export default function App() {
                       setBoxShadow((prev) => {
                         const updatedShadow = [...prev];
                         updatedShadow[index] = {
-                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          ...updatedShadow[index],
                           offsetX: +e.target.value,
                         };
                         return updatedShadow;
@@ -76,7 +76,7 @@ export default function App() {
                         setBoxShadow((prev) => {
                           const updatedShadow = [...prev];
                           updatedShadow[index] = {
-                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            ...updatedShadow[index],
                             offsetY: +e.target.value,
                           };
                           return updatedShadow;
@@ -90,7 +90,7 @@ export default function App() {
                       setBoxShadow((prev) => {
                         const updatedShadow = [...prev];
                         updatedShadow[index] = {
-                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          ...updatedShadow[index],
                           offsetY: +e.target.value,
                         };
                         return updatedShadow;
@@ -107,7 +107,7 @@ export default function App() {
                         setBoxShadow((prev) => {
                           const updatedShadow = [...prev];
                           updatedShadow[index] = {
-                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            ...updatedShadow[index],
                             blur: +e.target.value,
                           };
                           return updatedShadow;
@@ -121,7 +121,7 @@ export default function App() {
                       setBoxShadow((prev) => {
                         const updatedShadow = [...prev];
                         updatedShadow[index] = {
-                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          ...updatedShadow[index],
                           blur: +e.target.value,
                         };
                         return updatedShadow;
@@ -138,7 +138,7 @@ export default function App() {
                         setBoxShadow((prev) => {
                           const updatedShadow = [...prev];
                           updatedShadow[index] = {
-                            ...updatedShadow[index], // Ensure the object at `index` is copied
+                            ...updatedShadow[index],
                             spread: +e.target.value,
                           };
                           return updatedShadow;
@@ -152,7 +152,7 @@ export default function App() {
                       setBoxShadow((prev) => {
                         const updatedShadow = [...prev];
                         updatedShadow[index] = {
-                          ...updatedShadow[index], // Ensure the object at `index` is copied
+                          ...updatedShadow[index],
                           spread: +e.target.value,
                         };
                         return updatedShadow;
