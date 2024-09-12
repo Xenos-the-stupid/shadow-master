@@ -26,8 +26,8 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: var(--border-color);
   height: 0.3rem;
+  background-color: #999;
   border-radius: 50px;
 }
 
