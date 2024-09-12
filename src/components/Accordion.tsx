@@ -15,12 +15,12 @@ type AccordionContextType = {
 };
 
 const AccordionContext = createContext<AccordionContextType>({
-  isOpen: false,
+  isOpen: true,
   setIsOpen: () => {},
 });
 
 function Accordion({ ...props }: ComponentProps<"div">) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <AccordionContext.Provider value={{ isOpen, setIsOpen }}>
       <div {...props} />
