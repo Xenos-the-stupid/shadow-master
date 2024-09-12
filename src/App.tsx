@@ -227,6 +227,52 @@ export default function App() {
                   }
                 />
               </Pxinput>
+              <Pxinput>
+                <Pxinput.Header>
+                  <Pxinput.Label>Border Width</Pxinput.Label>
+                  <Pxinput.Size
+                    value={boxSettings.borderWidth}
+                    onChange={(e) =>
+                      setBoxSettings((prev) => ({
+                        ...prev,
+                        borderWidth: +e.target.value,
+                      }))
+                    }
+                  />
+                </Pxinput.Header>
+                <Pxinput.Range
+                  value={boxSettings.borderWidth}
+                  onChange={(e) =>
+                    setBoxSettings((prev) => ({
+                      ...prev,
+                      borderWidth: +e.target.value,
+                    }))
+                  }
+                />
+              </Pxinput>
+              <Pxinput>
+                <Pxinput.Header>
+                  <Pxinput.Label>Border Radius</Pxinput.Label>
+                  <Pxinput.Size
+                    value={boxSettings.borderRadius}
+                    onChange={(e) =>
+                      setBoxSettings((prev) => ({
+                        ...prev,
+                        borderRadius: +e.target.value,
+                      }))
+                    }
+                  />
+                </Pxinput.Header>
+                <Pxinput.Range
+                  value={boxSettings.borderRadius}
+                  onChange={(e) =>
+                    setBoxSettings((prev) => ({
+                      ...prev,
+                      borderRadius: +e.target.value,
+                    }))
+                  }
+                />
+              </Pxinput>
               <ColorInput>
                 <ColorInput.Circle
                   value={boxSettings.color}
@@ -244,6 +290,27 @@ export default function App() {
                     setBoxSettings((prev) => ({
                       ...prev,
                       color: e.target.value,
+                    }))
+                  }
+                />
+              </ColorInput>
+              <ColorInput>
+                <ColorInput.Circle
+                  value={boxSettings.borderColor}
+                  onChange={(e) =>
+                    setBoxSettings((prev) => ({
+                      ...prev,
+                      borderColor: e.target.value,
+                    }))
+                  }
+                />
+                <ColorInput.Label>Box Color</ColorInput.Label>
+                <ColorInput.Text
+                  value={boxSettings.borderColor}
+                  onChange={(e) =>
+                    setBoxSettings((prev) => ({
+                      ...prev,
+                      borderColor: e.target.value,
                     }))
                   }
                 />
