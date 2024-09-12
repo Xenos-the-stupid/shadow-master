@@ -7,6 +7,7 @@ export default {
         "primary-text": "var(--text-color-light)",
         "secondary-text-dark": "var(--text-color-dark)",
         "border-color": "var(--border-color)",
+        "border-color-dark": "var(--border-color-dark)",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

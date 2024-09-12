@@ -19,7 +19,7 @@ export default function App() {
       <Header />
 
       <div className="flex h-[calc(100dvh-90px)]">
-        <AsideWrapper className="border-r border-border-color">
+        <AsideWrapper className="dark:border-border-color-dark border-r border-border-color">
           {new Array(numberOfShadow).fill(0).map((_, index) => (
             <Accordion>
               <Accordion.Title>Box Shadow 1</Accordion.Title>
@@ -54,7 +54,7 @@ export default function App() {
         <main className="grid flex-1 place-items-center bg-[#999]">
           <TestingBox />
         </main>
-        <AsideWrapper className="border-l border-border-color">
+        <AsideWrapper className="dark:border-border-color-dark border-l border-border-color">
           <Accordion>
             <Accordion.Title>Box Settings</Accordion.Title>
             <Accordion.Body className="flex flex-col gap-5">
