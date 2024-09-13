@@ -8,6 +8,7 @@ import { playgroundSettingsAtom, PlaygroundSettings } from "./store/playground";
 import ColorInput from "./components/ColorInput";
 import { BoxShadowAtom, boxShadowAtom } from "./store/boxShadow";
 import CheckBox from "./components/CheckBox";
+import cn from "./utils/cn";
 
 type UpdateBoxShadowProps = {
   index: number;
@@ -36,6 +37,10 @@ export default function App() {
         color: "#00000055",
       },
     ]);
+  };
+
+  const deleteBoxShadow = (index: number) => {
+    setBoxShadow((prev) => prev.filter((_, i) => i !== index));
   };
 
   const updateBoxShadow = ({ e, index, prop }: UpdateBoxShadowProps) => {
@@ -72,7 +77,20 @@ export default function App() {
           {new Array(boxShadow.length).fill(null).map((_, index) => (
             <Accordion key={index}>
               <Accordion.Title>Box Shadow {index + 1}</Accordion.Title>
-              <Accordion.Body className="flex flex-col gap-5">
+              <Accordion.Body
+                className={cn(
+                  "flex flex-col gap-5",
+                  boxShadow.length > 1 && "px-0 pt-0 *:px-4",
+                )}
+              >
+                {boxShadow.length > 1 && (
+                  <button
+                    className="bg-red-500 py-3 font-medium text-white"
+                    onClick={() => deleteBoxShadow(index)}
+                  >
+                    Delete
+                  </button>
+                )}
                 <CheckBox>
                   <CheckBox.Input
                     id="inset"
