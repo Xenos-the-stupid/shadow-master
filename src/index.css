@@ -81,28 +81,3 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
   border-radius: 50%;
 }
-
-/* .dark {
-  --text-color-light: hsl(0, 0, 0, .87);
-  --text-color-dark: #2C3E50;
-  --border-color: rgba(255, 255, 255, .35);
-  --border-color-dark: #B2BABB;
-} */
-
-.test {
-  box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.3),
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000;
-  -webkit-box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.3),
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000;
-  -moz-box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.3),
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000,
-    0px 0px 0px 0px #000000;
-}
