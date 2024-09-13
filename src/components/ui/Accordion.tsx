@@ -7,7 +7,7 @@ import {
   useContext,
   useState,
 } from "react";
-import cn from "../utils/cn";
+import cn from "../../utils/cn";
 
 type AccordionContextType = {
   isOpen: boolean;

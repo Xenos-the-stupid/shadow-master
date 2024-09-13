@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 import Input from "./Input";
-import cn from "../utils/cn";
+import cn from "../../utils/cn";
 
 type InputType = Omit<ComponentProps<"input">, "type">;
 

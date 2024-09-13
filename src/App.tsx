@@ -1,13 +1,13 @@
 import { useAtom } from "jotai";
-import Accordion from "./components/Accordion";
+import Accordion from "./components/ui/Accordion";
 import AsideWrapper from "./components/AsideWrapper";
 import Header from "./components/Header";
-import Pxinput from "./components/PxInput";
+import Pxinput from "./components/ui/PxInput";
 import TestingBox from "./components/TestingBox";
 import { playgroundSettingsAtom, PlaygroundSettings } from "./store/playground";
-import ColorInput from "./components/ColorInput";
+import ColorInput from "./components/ui/ColorInput";
 import { BoxShadowAtom, boxShadowAtom } from "./store/boxShadow";
-import CheckBox from "./components/CheckBox";
+import CheckBox from "./components/ui/CheckBox";
 import cn from "./utils/cn";
 
 type UpdateBoxShadowProps = {

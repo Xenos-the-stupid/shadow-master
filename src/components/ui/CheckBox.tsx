@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 import Input from "./Input";
 import ColorInput from "./ColorInput";
-import cn from "../utils/cn";
+import cn from "../../utils/cn";
 
 function CheckBox({ ...props }: ComponentProps<"div">) {
   return (
