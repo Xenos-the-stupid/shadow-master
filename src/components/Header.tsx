@@ -15,7 +15,7 @@ export default function Header() {
     navigator.clipboard.writeText(generatedCode);
     toast.success("Copied to clipboard!", {
       className:
-        "dark:bg-black dark:text-primary-text shadow-md dark:shadow-white/30",
+        "dark:bg-black dark:text-primary-text shadow-md dark:text-primary-text-dark dark:shadow-white/30",
     });
   };
 
