@@ -7,6 +7,7 @@ import TestingBox from "./components/TestingBox";
 import { playgroundSettingsAtom, PlaygroundSettings } from "./store/playground";
 import ColorInput from "./components/ColorInput";
 import { BoxShadowAtom, boxShadowAtom } from "./store/boxShadow";
+import CheckBox from "./components/CheckBox";
 
 type UpdateBoxShadowProps = {
   index: number;
@@ -72,6 +73,23 @@ export default function App() {
             <Accordion key={index}>
               <Accordion.Title>Box Shadow {index + 1}</Accordion.Title>
               <Accordion.Body className="flex flex-col gap-5">
+                <CheckBox>
+                  <CheckBox.Input
+                    id="inset"
+                    checked={boxShadow[index].inset}
+                    onChange={(e) =>
+                      setBoxShadow((prev) => {
+                        const updatedShadow = [...prev];
+                        updatedShadow[index] = {
+                          ...updatedShadow[index],
+                          inset: e.target.checked,
+                        };
+                        return updatedShadow;
+                      })
+                    }
+                  />
+                  <CheckBox.Label htmlFor="inset">Inset</CheckBox.Label>
+                </CheckBox>
                 <Pxinput>
                   <Pxinput.Header>
                     <Pxinput.Label>OffSet X</Pxinput.Label>
