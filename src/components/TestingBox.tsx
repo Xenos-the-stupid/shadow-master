@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { playgroundSettingsAtom } from "../store/box";
+import { playgroundSettingsAtom } from "../store/playground";
 import { useRef, useEffect } from "react";
 import { addPixcels } from "../utils/add-pixcels";
 import { boxShadowAtom } from "../store/boxShadow";

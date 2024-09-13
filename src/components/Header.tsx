@@ -14,12 +14,13 @@ export default function Header() {
     const generatedCode = generateProperty(boxShadow);
     navigator.clipboard.writeText(generatedCode);
     toast.success("Copied to clipboard!", {
-      className: "dark:bg-black dark:text-white shadow-md dark:shadow-white/30",
+      className:
+        "dark:bg-black dark:text-primary-text shadow-md dark:shadow-white/30",
     });
   };
 
   return (
-    <header className="sticky top-0 flex h-[90px] items-center justify-between border-b border-border-color px-[35px] dark:border-border-color-dark dark:bg-black dark:text-white">
+    <header className="sticky top-0 flex h-[90px] items-center justify-between border-b border-border-color px-[35px] dark:border-border-color-dark dark:bg-[#121212] dark:text-white">
       <h1 className="text-2xl font-medium">Shadow Master</h1>
       <div className="flex items-center gap-[1.625rem]">
         <button>FeedBack</button>
@@ -38,7 +39,7 @@ export default function Header() {
           )}
         </button>
         <button
-          className="rounded-xl bg-black px-4 py-2 text-white dark:bg-white dark:text-black"
+          className="rounded-xl bg-black px-4 py-2 font-medium text-white dark:bg-white dark:text-black"
           onClick={copyGeneratedCode}
         >
           Copy Code

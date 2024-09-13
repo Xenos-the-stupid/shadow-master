@@ -5,9 +5,11 @@ export default {
     extend: {
       colors: {
         "primary-text": "var(--text-color-light)",
-        "secondary-text-dark": "var(--text-color-dark)",
+        "primary-text-dark": "var(--text-color-dark)",
         "border-color": "var(--border-color)",
         "border-color-dark": "var(--border-color-dark)",
+        "bg-dark": "var(--bg-dark)",
+        "bg-light": "var(--bg-light)",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

@@ -4,7 +4,7 @@ import AsideWrapper from "./components/AsideWrapper";
 import Header from "./components/Header";
 import Pxinput from "./components/PxInput";
 import TestingBox from "./components/TestingBox";
-import { playgroundSettingsAtom, PlaygroundSettings } from "./store/box";
+import { playgroundSettingsAtom, PlaygroundSettings } from "./store/playground";
 import ColorInput from "./components/ColorInput";
 import { BoxShadowAtom, boxShadowAtom } from "./store/boxShadow";
 
@@ -181,7 +181,7 @@ export default function App() {
         </main>
         <AsideWrapper className="border-l border-border-color dark:border-border-color-dark">
           <Accordion>
-            <Accordion.Title>Box Settings</Accordion.Title>
+            <Accordion.Title>PlayGround Settings</Accordion.Title>
             <Accordion.Body className="flex flex-col gap-5">
               <Pxinput>
                 <Pxinput.Header>
@@ -273,7 +273,7 @@ export default function App() {
                     updatePlaygroundSettings({ e, prop: "borderColor" })
                   }
                 />
-                <ColorInput.Label>Box Color</ColorInput.Label>
+                <ColorInput.Label>Border Color</ColorInput.Label>
                 <ColorInput.Text
                   value={boxSettings.borderColor}
                   onChange={(e) =>

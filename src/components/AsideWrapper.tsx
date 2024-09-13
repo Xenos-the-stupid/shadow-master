@@ -7,7 +7,10 @@ export default function AsideWrapper({ ...props }: AsideWrapperProps) {
   return (
     <aside
       {...props}
-      className={cn("w-[400px] bg-white dark:bg-black", props.className)}
+      className={cn(
+        "bg-bg-light dark:bg-bg-dark w-[400px] overflow-auto",
+        props.className,
+      )}
     />
   );
 }

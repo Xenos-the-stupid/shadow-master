@@ -5,14 +5,18 @@
 @tailwind utilities;
 
 :root {
-  --text-color-light: hsl(0, 0, 0, .56);
+  --text-color-light: #2C3E50;
   --text-color-dark: hsl(0, 0, 0, .87);
   --font-inter: "Inter", sans-serif;
-  --border-color: rgba(0, 0, 0, .35) --border-color-dark: rgba(255, 255, 255, .35);
+  --border-color: #B2BABB;
+  --border-color-dark: rgba(255, 255, 255, .35);
+  --bg-dark: #121212;
+  --bg-light: #FAFAFA;
 }
 
 html {
   font-family: var(--font-inter);
+  color: var(--text-color-light);
 }
 
 input[type="range"] {
@@ -27,12 +31,12 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-runnable-track {
   height: 0.3rem;
-  background-color: #999;
+  background-color: #AED6F1;
   border-radius: 50px;
 }
 
 input[type="range"]::-moz-range-track {
-  background: var(--border-color);
+  background: #AED6F1;
   height: 0.3rem;
   border-radius: 50px;
 }
@@ -41,7 +45,7 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   -webkit-appearance: none;
   margin-top: -5px;
-  background-color: #999;
+  background-color: #AED6F1;
   height: 1rem;
   width: 1rem;
   border-radius: 50%;
@@ -76,4 +80,29 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 
 input[type="color"]::-webkit-color-swatch {
   border-radius: 50%;
+}
+
+/* .dark {
+  --text-color-light: hsl(0, 0, 0, .87);
+  --text-color-dark: #2C3E50;
+  --border-color: rgba(255, 255, 255, .35);
+  --border-color-dark: #B2BABB;
+} */
+
+.test {
+  box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.3),
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000;
+  -webkit-box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.3),
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000;
+  -moz-box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.3),
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000,
+    0px 0px 0px 0px #000000;
 }
