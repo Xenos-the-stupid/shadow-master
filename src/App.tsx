@@ -210,7 +210,7 @@ export default function App() {
           </button>
         </AsideWrapper>
         <main
-          className="grid flex-1 place-items-center"
+          className="grid flex-1 place-items-center overflow-hidden"
           style={{ backgroundColor: boxSettings.backgroundColor }}
         >
           <TestingBox />
