@@ -10,7 +10,7 @@ export default function Input({
         {...props}
         placeholder={props.type === "number" ? "20" : "rgba(0, 0, 0, 0.1)"}
         className={cn(
-          "rounded-sm border border-border-color-dark px-1 outline-offset-4 focus:border-border-color focus:outline-1 dark:border-border-color-dark dark:bg-bg-dark",
+          "rounded-sm border border-border-color px-1 outline-offset-4 focus:border-border-color focus:outline-1 dark:border-border-color-dark dark:bg-bg-dark",
           props.className,
         )}
       />
