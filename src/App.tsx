@@ -29,11 +29,11 @@ export default function App() {
       ...prev,
       {
         inset: false,
-        offsetX: 0,
-        offsetY: 0,
-        blur: 0,
+        offsetX: 20,
+        offsetY: 20,
+        blur: 30,
         spread: 0,
-        color: "#000000",
+        color: "#00000055",
       },
     ]);
   };
