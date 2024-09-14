@@ -1,6 +1,7 @@
 import { ComponentProps } from "react";
 import cn from "../../utils/cn";
 import Input from "./Input";
+import { SaveOmit } from "../../types";
 
 function ColorInput({ ...props }: ComponentProps<"div">) {
   return (
@@ -15,7 +16,9 @@ function ColorInputLabel({ ...props }: ComponentProps<"label">) {
   return <label {...props} />;
 }
 
-function ColorInputCircle({ ...props }: Omit<ComponentProps<"input">, "type">) {
+function ColorInputCircle({
+  ...props
+}: SaveOmit<ComponentProps<"input">, "type">) {
   return (
     <Input type="color" {...props} className={cn("flex", props.className)} />
   );

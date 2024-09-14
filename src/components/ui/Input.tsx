@@ -8,7 +8,13 @@ export default function Input({
     <div className={cn("relative", props.outerDivClasses)}>
       <input
         {...props}
-        placeholder={props.type === "number" ? "20" : "rgba(0, 0, 0, 0.1)"}
+        placeholder={
+          props.type === "number"
+            ? "20"
+            : props.type === "color"
+              ? "rgba(0, 0, 0, 0.1)"
+              : props.placeholder
+        }
         className={cn(
           "rounded-sm border border-border-color px-1 outline-offset-4 focus:border-border-color focus:outline-1 dark:border-border-color-dark dark:bg-bg-dark",
           props.className,

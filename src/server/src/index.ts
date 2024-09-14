@@ -1,11 +1,12 @@
 import { FeedBack } from "@prisma/client";
 import { Hono } from "hono";
 import { prisma } from "../utils/prisma";
+import { cors } from "hono/cors";
+import { SaveOmit } from "../../types";
 
 const app = new Hono();
 
-type SaveOmit<T, K extends keyof T> = Omit<T, K>;
-
+app.use("*", cors());
 app.post("/feedback", async (c) => {
   const { title, message } = (await c.req.json()) as SaveOmit<FeedBack, "id">;
   try {
@@ -15,6 +16,7 @@ app.post("/feedback", async (c) => {
         message,
       },
     });
+    return c.text("Thank you for your feedback", 200);
   } catch (error) {
     if (error instanceof Error) {
       return c.text(error.message, 500);

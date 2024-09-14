@@ -1,8 +1,9 @@
 import { ComponentProps } from "react";
 import Input from "./Input";
 import cn from "../../utils/cn";
+import { SaveOmit } from "../../types";
 
-type InputType = Omit<ComponentProps<"input">, "type">;
+type InputType = SaveOmit<ComponentProps<"input">, "type">;
 
 function Pxinput({ ...props }: ComponentProps<"div">) {
   return <div {...props} />;
