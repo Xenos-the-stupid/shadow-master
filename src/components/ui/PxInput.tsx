@@ -26,7 +26,7 @@ function Label({ ...props }: ComponentProps<"label">) {
 }
 
 function RangeInput({ ...props }: InputType) {
-  return <Input {...props} type="range" max={400} min={0} />;
+  return <Input {...props} type="range" max={400} />;
 }
 
 Header.displayName = "Header";

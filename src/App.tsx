@@ -119,6 +119,7 @@ export default function App() {
                     />
                   </Pxinput.Header>
                   <Pxinput.Range
+                    min={-400}
                     value={boxShadow[index].offsetX}
                     onChange={(e) =>
                       updateBoxShadow({ e, index, prop: "offsetX" })
@@ -144,6 +145,7 @@ export default function App() {
                   </Pxinput.Header>
                   <Pxinput.Range
                     value={boxShadow[index].offsetY}
+                    min={-400}
                     onChange={(e) =>
                       updateBoxShadow({ e, index, prop: "offsetY" })
                     }
@@ -160,6 +162,7 @@ export default function App() {
                     />
                   </Pxinput.Header>
                   <Pxinput.Range
+                    min={-400}
                     value={boxShadow[index].blur}
                     onChange={(e) =>
                       updateBoxShadow({ e, index, prop: "blur" })
@@ -177,6 +180,7 @@ export default function App() {
                     />
                   </Pxinput.Header>
                   <Pxinput.Range
+                    min={-400}
                     value={boxShadow[index].spread}
                     onChange={(e) =>
                       updateBoxShadow({ e, index, prop: "spread" })
