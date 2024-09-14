@@ -9,6 +9,9 @@ import Modal from "./ui/Modal";
 import Input from "./ui/Input";
 import { useState } from "react";
 import TextAria from "./ui/TextAria";
+const API_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : import.meta.env.VITE_API_URL!;
 
 export default function Header() {
   const { themeMode, setThemeMode } = useThemeMode();
@@ -26,7 +29,7 @@ export default function Header() {
 
   const submit = async () => {
     try {
-      const res = await fetch("http://localhost:3000/feedback", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
