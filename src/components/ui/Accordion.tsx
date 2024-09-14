@@ -7,6 +7,7 @@ import {
   useContext,
   useState,
 } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 import cn from "../../utils/cn";
 
 type AccordionContextType = {
@@ -40,11 +41,19 @@ function AccordionTitle({ ...props }: ComponentProps<"button">) {
     <button
       {...props}
       className={cn(
-        "w-full border-b border-border-color p-4 text-2xl font-medium",
+        "flex w-full items-center justify-center gap-3 border-b border-border-color p-4 text-2xl font-medium",
         props.className,
       )}
       onClick={handler}
-    />
+    >
+      <span>{props.children}</span>{" "}
+      <span>
+        {" "}
+        <IoIosArrowDown
+          className={`${isOpen ? "-rotate-90" : ""} duration-300`}
+        />
+      </span>
+    </button>
   );
 }
 
