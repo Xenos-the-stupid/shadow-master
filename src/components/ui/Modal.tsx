@@ -7,6 +7,7 @@ import {
   useRef,
 } from "react";
 import cn from "../../utils/cn";
+import { IoMdClose } from "react-icons/io";
 
 const ModalContext = createContext<RefObject<HTMLDialogElement> | null>(null);
 
@@ -44,7 +45,7 @@ function ModalBody({ ...props }: ComponentProps<"dialog">) {
           onClick={() => dialogRef!.current?.close()}
           className="absolute right-0 top-0 size-8 rounded-[inherit] bg-red-500"
         >
-          X
+          <IoMdClose size={20} />
         </button>
       </div>
     </dialog>

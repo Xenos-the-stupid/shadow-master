@@ -15,7 +15,7 @@ export default function Header() {
     navigator.clipboard.writeText(generatedCode);
     toast.success("Copied to clipboard!", {
       className:
-        "dark:bg-black dark:text-primary-text shadow-md dark:text-primary-text-dark dark:shadow-white/30",
+        "dark:bg-bg-dark dark:text-primary-text shadow-md dark:text-primary-text-dark dark:shadow-white/10",
     });
   };
 
@@ -23,7 +23,10 @@ export default function Header() {
     <header className="sticky top-0 flex h-[90px] items-center justify-between border-b border-border-color px-[35px] dark:border-border-color-dark dark:bg-[#121212] dark:text-white">
       <h1 className="text-2xl font-medium">Shadow Master</h1>
       <div className="flex items-center gap-[1.625rem]">
-        <a href="https://github.com/Xenos-the-stupid/shadow-master" target="_blank">
+        <a
+          href="https://github.com/Xenos-the-stupid/shadow-master"
+          target="_blank"
+        >
           <FaGithub size={25} />
         </a>
         <button
