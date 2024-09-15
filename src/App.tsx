@@ -9,6 +9,8 @@ import ColorInput from "./components/ui/ColorInput";
 import { BoxShadowAtom, boxShadowAtom } from "./store/boxShadow";
 import CheckBox from "./components/ui/CheckBox";
 import cn from "./utils/cn";
+import { useState } from "react";
+import { BsReverseLayoutSidebarReverse } from "react-icons/bs";
 
 type UpdateBoxShadowProps = {
   index: number;
@@ -24,6 +26,8 @@ type UpdatePlaygroundSettingsProps = {
 export default function App() {
   const [boxSettings, setBoxSettings] = useAtom(playgroundSettingsAtom);
   const [boxShadow, setBoxShadow] = useAtom(boxShadowAtom);
+  const [isLeftSideOpen, setIsLeftSideOpen] = useState(false);
+  const [isRightSideOpen, setIsRightSideOpen] = useState(false);
 
   const onAddShadow = () => {
     setBoxShadow((prev) => [
@@ -73,7 +77,19 @@ export default function App() {
       <Header />
 
       <div className="flex h-[calc(100dvh-90px)]">
-        <AsideWrapper className="border-r border-border-color dark:border-border-color-dark">
+        <AsideWrapper
+          isOpen={isLeftSideOpen}
+          className="border-r border-border-color dark:border-border-color-dark"
+        >
+          <button
+            className="absolute bottom-5 left-5 md:hidden"
+            onClick={() => setIsLeftSideOpen(!isLeftSideOpen)}
+          >
+            <BsReverseLayoutSidebarReverse
+              size={30}
+              color={isLeftSideOpen ? "#fff" : "#000"}
+            />
+          </button>
           {new Array(boxShadow.length).fill(null).map((_, index) => (
             <Accordion key={index}>
               <Accordion.Title>Box Shadow {index + 1}</Accordion.Title>
@@ -219,7 +235,19 @@ export default function App() {
         >
           <TestingBox />
         </main>
-        <AsideWrapper className="border-l border-border-color dark:border-border-color-dark">
+        <AsideWrapper
+          isOpen={isRightSideOpen}
+          className="border-l border-border-color dark:border-border-color-dark"
+        >
+          <button
+            className="absolute bottom-5 right-5 md:hidden"
+            onClick={() => setIsRightSideOpen(!isRightSideOpen)}
+          >
+            <BsReverseLayoutSidebarReverse
+              size={30}
+              color={isRightSideOpen ? "#fff" : "#000"}
+            />
+          </button>
           <Accordion>
             <Accordion.Title>PlayGround Settings</Accordion.Title>
             <Accordion.Body className="flex flex-col gap-5">

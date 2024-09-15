@@ -1,16 +1,21 @@
-import { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 import cn from "../utils/cn";
 
-type AsideWrapperProps = ComponentProps<"aside">;
+type AsideWrapperProps = ComponentProps<"aside"> & {
+  isOpen: boolean;
+};
 
-export default function AsideWrapper({ ...props }: AsideWrapperProps) {
+export default function AsideWrapper({ isOpen, ...props }: AsideWrapperProps) {
   return (
     <aside
       {...props}
       className={cn(
-        "bg-bg-light dark:bg-bg-dark w-[400px] overflow-auto",
+        "w-[350px] overflow-auto bg-bg-light dark:bg-bg-dark",
+        isOpen ? "max-md:w-fit" : "max-md:w-0",
         props.className,
       )}
-    />
+    >
+      {props.children}
+    </aside>
   );
 }
